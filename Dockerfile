@@ -1,7 +1,5 @@
 FROM registry.fedoraproject.org/fedora-minimal:36
 
-ENV 
-
 VOLUME /var/db/tang
 WORKDIR /app
 
