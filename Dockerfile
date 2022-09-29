@@ -1,9 +1,8 @@
-FROM registry.fedoraproject.org/fedora-minimal:latest
+FROM registry.fedoraproject.org/fedora-minimal:36
 
-ENV ENABLE_IPv4=1
-ENv ENABLE_IPv6=0
+ENV 
 
-VOLUME /db
+VOLUME /var/db/tang
 WORKDIR /app
 
 EXPOSE 80
@@ -16,7 +15,6 @@ RUN microdnf install -y \
     microdnf clean all &&\
     rm -rf /var/cache/yum
 
-CMD "/app/start-tang.sh"
+HEALTHCHECK --start-period=5s --timeout=3s CMD ["/app/check-tang.sh"]
 
-HEALTHCHECK --start-period=5s --timeout=3s \
-    CMD "/app/check-tang.sh"
+CMD ["/app/start-tang.sh"]

@@ -1,9 +1,5 @@
-#!/bin/sh -e
+#!/bin/bash
 
-if [ "$ENABLE_IPv4" = "1" ]; then
-  wget -4qSO /dev/null http://127.0.0.1:80/adv
-fi
+set -eu
 
-if [ "$ENABLE_IPv6" = "1" ]; then
-  wget -6qSO /dev/null http://[::1]:80/adv
-fi
+tang-show-keys 80
