@@ -17,5 +17,5 @@ RUN microdnf install -y \
 
 CMD "start-tang"
 
-HEALTHCHECK --start-period5s --timeout=3s \
+HEALTHCHECK --start-period=5s --timeout=3s \
     CMD "check-tang"
