@@ -1,5 +1,8 @@
 #!/bin/sh
-set -e
+
+set -eif [ -z "${ENTRYPOINT_RUN_AS_ROOT:-}" ]; then
+    chown -R $PUID:$GUID /var/db/tang
+fi
 
 mkdir -p /var/db/tang /var/cache/tang
 

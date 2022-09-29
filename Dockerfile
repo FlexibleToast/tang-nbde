@@ -1,6 +1,7 @@
 FROM registry.fedoraproject.org/fedora-minimal:36
 
 VOLUME /var/db/tang
+
 WORKDIR /app
 
 EXPOSE 80
