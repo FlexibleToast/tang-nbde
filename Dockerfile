@@ -4,10 +4,11 @@ ENV ENABLE_IPv4=1
 ENv ENABLE_IPv6=0
 
 VOLUME /db
+WORKDIR /app
 
 EXPOSE 80
 
-COPY check-tang.sh start-tang.sh /usr/local/sbin
+COPY app /app
 
 RUN microdnf install -y \
         tang \
@@ -15,7 +16,7 @@ RUN microdnf install -y \
     microdnf clean all &&\
     rm -rf /var/cache/yum
 
-CMD "start-tang"
+CMD "/app/start-tang.sh"
 
 HEALTHCHECK --start-period=5s --timeout=3s \
-    CMD "check-tang"
+    CMD "/app/check-tang.sh"
